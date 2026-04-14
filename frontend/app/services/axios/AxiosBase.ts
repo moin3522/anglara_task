@@ -13,14 +13,8 @@ if (typeof window === 'undefined') {
     })
 
     AxiosBase.interceptors.request.use(async (config) => {
-        try {
-            const { cookies } = await import('next/headers')
-            const cookieStore = await cookies()
-            const cookieString = cookieStore.toString()
-            config.headers.Cookie = cookieString
-        } catch {
-            // Ignore error if cookies cannot be imported
-        }
+        // We do not inject cookies here by default to prevent Next.js static/dynamic rendering conflicts
+        // If specific requests need cookies, they should be passed explicitly from the Server Component
         return AxiosRequestIntrceptorConfigCallback(config)
     }, (error) => {
         return Promise.reject(error)
