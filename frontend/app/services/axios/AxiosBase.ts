@@ -6,18 +6,21 @@ let AxiosBase: AxiosInstance
 
 // ⛔ This block runs only on server (SSR)
 if (typeof window === 'undefined') {
-    const { cookies } = await import('next/headers')
-
     AxiosBase = axios.create({
-        baseURL: `${process.env.API_URL}`,
+        baseURL: process.env.NEXT_PUBLIC_API_URL || process.env.API_URL || 'https://fakestoreapi.com',
         timeout: 600000,
-        withCredentials: true,
+        withCredentials: false,
     })
 
     AxiosBase.interceptors.request.use(async (config) => {
-        const cookieStore = await cookies()
-        const cookieString = cookieStore.toString()
-        config.headers.Cookie = cookieString
+        try {
+            const { cookies } = await import('next/headers')
+            const cookieStore = await cookies()
+            const cookieString = cookieStore.toString()
+            config.headers.Cookie = cookieString
+        } catch {
+            // Ignore if cookies aren't available
+        }
         return AxiosRequestIntrceptorConfigCallback(config)
     }, (error) => {
         return Promise.reject(error)
@@ -26,9 +29,9 @@ if (typeof window === 'undefined') {
 } else {
     // ✅ Client-side
     AxiosBase = axios.create({
-        baseURL: `${process.env.API_URL}`,
+        baseURL: process.env.NEXT_PUBLIC_API_URL || process.env.API_URL || 'https://fakestoreapi.com',
         timeout: 600000,
-        withCredentials: true,
+        withCredentials: false,
     })
 
     AxiosBase.interceptors.request.use(
