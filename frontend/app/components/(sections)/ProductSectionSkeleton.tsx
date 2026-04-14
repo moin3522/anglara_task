@@ -1,4 +1,4 @@
-import React from 'react'
+'use client'
 import { ProductCardSkeleton } from '../ProductCardSkeleton'
 
 export function ProductSectionSkeleton({ title }: { title: string }) {
