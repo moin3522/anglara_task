@@ -6,14 +6,18 @@ let AxiosBase: AxiosInstance
 
 // ⛔ This block runs only on server (SSR)
 if (typeof window === 'undefined') {
+    const { cookies } = await import('next/headers')
+
     AxiosBase = axios.create({
-        baseURL: process.env.NEXT_PUBLIC_API_URL || process.env.API_URL || 'https://fakestoreapi.com',
+        baseURL: `${process.env.API_URL}`,
         timeout: 600000,
+        withCredentials: true,
     })
 
     AxiosBase.interceptors.request.use(async (config) => {
-        // Removed cookies() call here because reading cookies dynamically inside Server Components 
-        // during interceptor async contexts breaks Vercel deployments!
+        const cookieStore = await cookies()
+        const cookieString = cookieStore.toString()
+        config.headers.Cookie = cookieString
         return AxiosRequestIntrceptorConfigCallback(config)
     }, (error) => {
         return Promise.reject(error)
@@ -22,7 +26,7 @@ if (typeof window === 'undefined') {
 } else {
     // ✅ Client-side
     AxiosBase = axios.create({
-        baseURL: process.env.NEXT_PUBLIC_API_URL || process.env.API_URL || 'https://fakestoreapi.com',
+        baseURL: `${process.env.API_URL}`,
         timeout: 600000,
         withCredentials: true,
     })

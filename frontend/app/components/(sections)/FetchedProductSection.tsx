@@ -1,7 +1,8 @@
 import React from 'react'
 import ProductSection from './ProductSection'
-import type { Product } from '../../types'
-import axios from 'axios';
+import { apiGetAllProducts } from '../../services/api/fakestore'
+
+
 
 interface FetchedProductSectionProps {
     title: string;
@@ -11,30 +12,10 @@ interface FetchedProductSectionProps {
 }
 
 export default async function FetchedProductSection({ title, limit = 4, sort = 'desc' }: FetchedProductSectionProps) {
-    let allProducts: Product[] = [];
-    try {
-        let baseUrl = process.env.API_URL || 'https://fakestoreapi.com';
-        // Remove trailing slash if present
-        if (baseUrl.endsWith('/')) {
-            baseUrl = baseUrl.slice(0, -1);
-        }
-        
-        const url = `${baseUrl}/products?limit=${limit}&sort=${sort}`;
-        
-        // Added User-Agent because some public APIs block Vercel serverless requests missing it
-       const res = await axios.get(url)
+    const response = await apiGetAllProducts(limit, sort);
 
-        if (res.status !== 200) {
-            throw new Error(`HTTP error! status: ${res.status}`);
-        }
-
-        const data = res.data;
-        allProducts = Array.isArray(data) ? data : [];
-    } catch (error) {
-        console.error(`Failed to fetch products for section ${title}:`, error);
-        allProducts = []; // Fallback to empty array
-    }
-
+    const allProducts = response || [];
+    
     if (!allProducts.length) {
         return <ProductSection title={title} products={[]} />;
     }
