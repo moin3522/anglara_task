@@ -1,0 +1,186 @@
+@import "tailwindcss";
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+  --font: 1rem;
+  --max-width: 1460px;
+  --radius: 0.625rem;
+  --bg-color: #FFFFFF;
+  --accent-color:#000000;
+  --text-primary-color:var(--accent-color);
+  --secondary-color: #F0F0F0;
+  --text-secondary-color: #FFFFFF;
+  --radius: 0.925rem; 
+}
+
+/* @media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+} */
+
+
+
+body {
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  font-family: var(--font-satoshi-regular), sans-serif;
+  font-size: var(--font);
+  scroll-behavior: smooth;
+}
+
+.main-container {
+  font-size: var(--font);
+  display: flex;
+  align-content: center;
+  justify-content: center;
+  overflow: clip;
+} 
+
+.main-container .main-section {
+  max-width: var(--max-width);
+  width: 100%;
+}
+
+.padd-X {
+  padding-left: 3em;
+  padding-right: 3em;
+}
+.padd-Y{
+  padding-top: 3em;
+  padding-bottom: 3em;
+}
+
+p {
+  font-size: 1em;
+  color: #000000;
+  opacity: 0.6;
+}   
+
+a{
+  font-size: 1em;
+  cursor: pointer;
+}
+
+h1,h2{
+  font-family: var(--font-integralcf-bold), sans-serif;
+  line-height: 1.1; 
+}
+
+h3,h4,h5{
+  font-family: var(--font-satoshi-regular),sans-serif;
+  font-weight: 700;
+}
+
+h1{
+  font-size: 3.5em;
+} 
+
+h2{
+  font-size: 3em;
+}
+
+.heading1 {
+  padding-bottom: 2em;
+  text-align: center;
+}
+
+.stat-number {
+  font-size: 2.8em;
+  font-weight: bold;
+}
+
+.stat-label {
+  margin-top: 0.25em;
+  font-size: 0.85em;
+  color: #000000;
+  opacity: 0.6;
+}
+
+.input-field {
+  height: 100%;
+  min-width: 300px;
+  border-radius: 100px;
+  display: flex;
+  align-items: center; 
+  gap: 15px;
+  padding: 10px 20px; 
+  border: 1px solid transparent;
+  transition: border-color 0.2s ease;
+}
+
+.input-field:focus-within {
+  border-color: black;
+}
+
+.input-field input {
+  outline: none; 
+  background: transparent;
+  width: 100%;
+}
+
+button{
+  cursor: pointer; 
+}
+
+.btn-primary,.btn-transparent{ 
+  width: 200px;
+  border-radius: 100px;
+  padding: 13px 20px;    
+  background-color: var(--accent-color);
+  color: var(--bg-color);
+  border: 2px solid var(--accent-color);
+  cursor: pointer;
+}   
+.btn-primary:hover{
+  background-color: transparent;
+  color: var(--accent-color);
+  border: 2px solid var(--accent-color);
+  transition: all 0.45s ease-in-out; 
+} 
+
+.btn-transparent{
+  background-color: transparent; 
+  color: var(--accent-color);
+  font-weight: 600;
+  border: 2px solid var(--secondary-color);
+}
+.btn-transparent:hover{
+  border-color: var(--accent-color);  
+  transition: all 0.45s ease-in-out; 
+}
+
+  
+@media (max-width: 768px) {
+  .padd-X {
+    padding-left: 1em;
+    padding-right: 1em;
+  } 
+  
+  :root{
+    --font:0.8rem
+  }
+  h1{
+    font-size: 2.5em;
+  }
+  h2{
+    font: 2.5em;
+  }
+}
+
+@media (max-width: 640px) {
+  :root {
+    --font: 0.75rem;
+  }
+  .btn-primary,.btn-transparent{ 
+    width: 100% !important;
+  }
+  h1 {
+    font-size: 2.25em;
+  }
+  h2 {
+    font-size: 2.25em;
+  }
+}
