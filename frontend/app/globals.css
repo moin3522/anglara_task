@@ -35,14 +35,14 @@ body {
   font-size: var(--font);
   display: flex;
   align-content: center;
-  justify-content: center;
+  justify-content: center; 
   overflow: clip;
 } 
 
 .main-container .main-section {
   max-width: var(--max-width);
   width: 100%;
-}
+} 
 
 .padd-X {
   padding-left: 3em;
@@ -151,16 +151,29 @@ button{
   border-color: var(--accent-color);  
   transition: all 0.45s ease-in-out; 
 }
-
-  
+@media (max-width: 1024px) {
+  :root {
+    --font: 0.8rem; 
+  }
+  .padd-X {
+    padding-left: 1.4em;
+    padding-right: 1.4em;
+  }
+  h1 {
+    font-size: 3em;
+  }
+  h2 {
+    font-size: 2.5em;
+  }
+}
 @media (max-width: 768px) {
   .padd-X {
     padding-left: 1em;
     padding-right: 1em;
   } 
-  
+   
   :root{
-    --font:0.8rem
+    --font:0.7rem
   }
   h1{
     font-size: 2.5em;

@@ -17,7 +17,8 @@ function PromoBanner() {
           transition={{ duration: 0.3, ease: 'easeInOut' }}
           className='main-container bg-(--accent-color)'
         >
-          <div className='main-section relative text-[0.9em] text-white text-center flex gap-2 items-center justify-center padd-X py-2'>
+          <div className='main-section   padd-X py-2'>
+            <div className='w-full relative text-[0.9em] text-white text-center flex gap-2 items-center justify-center'>
                 <p className="opacity-100! text-white!">Sign up and get 20% off to your first order. </p> <span><a className='underline text-[1em] cursor-pointer'>Sign Up Now</a></span>
                 <button 
                   onClick={() => setIsVisible(false)}
@@ -25,6 +26,7 @@ function PromoBanner() {
                 >
                     <CgClose size={20}/>
                 </button> 
+            </div>
           </div>
         </motion.div>
       )}
