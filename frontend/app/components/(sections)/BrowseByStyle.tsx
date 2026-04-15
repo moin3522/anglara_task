@@ -18,8 +18,9 @@ function BrowseByStyle() {
                         <Image 
                             src="/images/casual_style.png" 
                             alt="Casual Style" 
+                            sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                             fill 
-                            className="object-cover"
+                            className="w-full h-full object-cover"
                         />
                     </div>
                     
@@ -28,18 +29,22 @@ function BrowseByStyle() {
                         <Image 
                             src="/images/formal_style.png" 
                             alt="Formal Style" 
+                            sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 66vw"
                             fill 
-                            className="object-cover"
+                            className="w-full h-full  object-cover"
                         />
-                    </div>
+                    </div> 
+                            
+                   
 
                     <div className='relative h-[190px] sm:h-[260px] lg:h-[289px] sm:col-span-2 rounded-[20px] overflow-hidden bg-white shadow-sm   '>
                         <h3 className='absolute top-6 left-6 text-2xl sm:text-3xl font-bold z-10'>Party</h3>
                         <Image 
                             src="/images/party_style.png" 
                             alt="Party Style" 
+                            sizes='(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 66vw'
                             fill 
-                            className="object-cover"
+                            className="w-full h-full  object-cover"
                         />
                     </div>
 
@@ -48,13 +53,15 @@ function BrowseByStyle() {
                         <Image 
                             src="/images/gym_style.png" 
                             alt="Gym Style" 
+                            sizes='(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw'
                             fill 
-                            className="object-cover"
+                            className="w-full h-full object-cover"
                         />
                     </div>
                 </div>
             </div>
         </div>
+        
     </div>
   )
 }
